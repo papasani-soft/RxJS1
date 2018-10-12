@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script src="https://unpkg.com/@reactivex/rxjs@5.3.0/dist/global/Rx.js "></script>
+<script>
+    var subject = new Rx.Subject();
+    subject.subscribe({
+        next: function (value) {
+            console.log(value);
+        },
+      error: function (error) {
+          console.log(error);
+        },
+      complete: function () {
+          console.log('complete');
+      }
+
+    });
+    subject.next('A new data piece');
+    subject.complete();
+
+</script>
+</body>
+</html>

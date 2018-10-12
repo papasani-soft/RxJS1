@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <script src="https://unpkg.com/@reactivex/rxjs@5.3.0/dist/global/Rx.js "></script>
+    <script>
+        var observable = Rx.Observable.interval(1000);
+        var observer = {
+            next: function (value) {
+                console.log(value);
+            }
+        };
+        observable.map(function (value) {
+            return 'Number : ' + value;
+        }).throttleTime(1000).subscribe(observer);
+    </script>
+</body>
+</html>

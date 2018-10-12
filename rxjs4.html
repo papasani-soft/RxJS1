@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+<body>
+    <button>click me</button>
+    <script src="https://unpkg.com/@reactivex/rxjs@5.3.0/dist/global/Rx.js "></script>
+    <script>
+        var button = document.querySelector('button');
+        var observer = {
+            next: function (value) {
+                console.log(value);
+            },
+            error: function (error) {
+                console.log(error);
+            },
+            complete: function () {
+                console.log("completed");
+            }
+        };
+      
+      var subscription=  Rx.Observable.create(function (obs) {
+         
+            button.onclick = function (event) {
+                obs.next(event);
+            }
+        })
+            .subscribe(observer);
+        setTimeout(function () {
+            subscription.unsubscribe();
+        }, 10000)
+    </script>
+
+
+</body>
+</html>
